@@ -231,6 +231,23 @@ document.querySelectorAll('.lanyard-frame').forEach(f=>{
 const bar=document.getElementById("progress");
 addEventListener("scroll",()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";},{passive:true});
 
+if (window.gsap && window.ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  if (window.Lenis) {
+    const lenis = new Lenis({ lerp: 0.08 });
+    function raf(t){ lenis.raf(t); requestAnimationFrame(raf);} requestAnimationFrame(raf);
+    lenis.on('scroll', ScrollTrigger.update);
+  }
+  document.querySelectorAll('section,.hero > div:first-child,.id-hang').forEach(sec=>{
+    const bits = sec.querySelectorAll ? sec.querySelectorAll('h1,h2,.avail,.muted,.card,.feat,.quote,.faq,.proj,.stage,.work-copy,.lead,.pills,.role,.id-card,.cert') : [];
+    const targets = bits.length ? bits : [sec];
+    gsap.from(targets,{
+      y:40, opacity:0, duration:.85, ease:'power3.out', stagger:.07,
+      scrollTrigger: { trigger:sec, start:'top 82%' }
+    });
+  });
+}
+
 const projects = [
   {title:'RFID Student Monitoring',stack:['Django','RFID','Reporting'],desc:'Attendance captured at the gate, photo attached, email sent, records exported.',img:'assets/p-rfid.jpg'},
   {title:'iTrak Terminal Operations',stack:['CodeIgniter','RFID','Analytics'],desc:'Driver attendance, queues, routes, and payments in one operational console.',img:'assets/p-itrak.jpg'},
