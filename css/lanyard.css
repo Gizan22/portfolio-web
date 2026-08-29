@@ -16,3 +16,6 @@
   .id-col{min-height:520px}
   .id-hang{transform:scale(.92);transform-origin:50% 0}
 }
+
+.lanyard-frame{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;z-index:18}
+.id-col{position:relative}
