@@ -1,7 +1,7 @@
 {
-  "cleanUrls": true,
+  "cleanUrls": false,
   "rewrites": [
-    { "source": "/work", "destination": "/work.html" },
-    { "source": "/thanks", "destination": "/thanks.html" }
+    { "source": "/lanyard", "destination": "/lanyard/index.html" },
+    { "source": "/lanyard/", "destination": "/lanyard/index.html" }
   ]
 }
