@@ -1,0 +1,11 @@
+Folder ini HTML biasa. Bisa di Vercel tanpa PHP/Laravel.
+
+1. Buat repo baru di GitHub, contoh portfolio-web
+   https://github.com/new  (akun Gizan22)
+2. Upload SEMUA isi folder gizza-vercel (index.html harus di root repo)
+3. Buka https://vercel.com/signup  login dengan GitHub
+4. Add New Project -> pilih repo itu
+5. Framework Preset: Other
+6. Deploy
+
+Dapat link seperti https://portfolio-web.vercel.app

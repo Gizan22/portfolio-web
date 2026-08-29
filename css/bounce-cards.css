@@ -1,0 +1,15 @@
+.bounceCardsContainer{position:relative;display:flex;justify-content:center;align-items:center;margin:36px auto 10px;max-width:100%}
+.bounce-card{position:absolute;width:200px;aspect-ratio:1;border:5px solid #fff;border-radius:25px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer;background:#111}
+.bounce-card{z-index:2}
+.bounce-card .image{width:100%;height:100%;object-fit:cover;pointer-events:none}
+html[data-theme="light"] .bounce-card{border-color:#fff}
+.bounce-info{margin:28px auto 0;text-align:center;max-width:420px}
+.bounce-info b{display:block;font-size:20px;margin-bottom:6px}
+.bounce-info .ghost{display:inline-grid;margin-top:12px}
+#certZoom{display:none;position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.88);place-items:center;padding:24px;cursor:zoom-out}
+#certZoom.is-on{display:grid}
+#certZoom img{max-width:min(980px,92vw);max-height:78vh;border-radius:10px;background:#fff}
+#certZoom .zoom-cap{margin-top:12px;text-align:center;color:#fff}
+@media(max-width:720px){
+  .bounce-card{width:120px}
+}

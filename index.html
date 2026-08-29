@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id" x-data="portfolioApp()" x-init="init()">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Giarda Zahran Putra Darmawan — Frontend Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/app.css"/>
+<link rel="stylesheet" href="css/shape-grid.css"/>
+<link rel="stylesheet" href="css/dock.css"/>
+<link rel="stylesheet" href="css/logo-loop.css"/>
+<link rel="stylesheet" href="css/lanyard.css"/>
+<link rel="stylesheet" href="css/text-type.css"/>
+<script defer src="js/alpine-app.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="cursor" id="cursor"></div>
+<div id="intro" x-show="intro" x-transition.opacity.duration.500ms x-cloak>
+  <div>
+    <div class="intro-icons"><i>&lt;/&gt;</i><i>●</i><i>◎</i></div>
+    <div class="intro-title">Welcome to my<br>Portfolio Website</div>
+    <button type="button" id="enterBtn" @click="enter()">giarda.dev</button>
+  </div>
+</div>
+<div class="shapegrid-bg"><canvas id="shapeGrid" class="shapegrid-canvas"></canvas></div>
+<div class="wrap">
+  <div class="nav-wrap">
+    <nav>
+      <a class="brand" href="index.html">giarda.dev</a>
+      <div class="links">
+        <a href="#work">Work</a>
+        <a href="#prestasi">Prestasi</a>
+        <a href="work.html">Archive</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="ghost" type="button" @click="toggleTheme()" x-text="theme==='dark' ? 'Light' : 'Night'"></button>
+        <button class="ghost search-btn" type="button" @click="openPalette()" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+          <span>Search</span>
+        </button>
+        <a class="chip solid" href="#contact">Available</a>
+      </div>
+    </nav>
+  </div>
+
+<header class="hero" id="home">
+  <div>
+    <div class="avail">+ AVAILABLE FOR WORK</div>
+    <h1>FRONTEND<br>DEVELOPER</h1>
+    <div class="role" id="roleType">fresh Graduate</div>
+    <p class="lead">Menciptakan website modern dengan tampilan clean, responsif, dan elegan. Mengubah ide menjadi produk yang orang bisa pakai tanpa saya di sebelahnya.</p>
+    <div class="pills"><span>Typescript</span><span>React.js</span><span>Tailwind</span><span>Laravel</span><span>Three.js</span></div>
+    <div class="notes">↓ explore my work below<br>↗ open to full-time & freelance opportunities</div>
+  </div>
+  <div class="id-col">
+    <iframe class="lanyard-frame" src="lanyard/index.html" title="Lanyard"></iframe>
+  </div>
+</header>
+<div class="logo-loop-wrap"><div id="logoLoop"></div></div>
+<div class="scroll-ind">SCROLL ↓</div>
+
+<section id="work">
+  <div class="avail">SELECTED WORK</div>
+  <h2>SYSTEMS</h2>
+  <p class="muted">Drag the gallery. This is the work, not the decoration.</p>
+  <div class="stage" id="stage"><canvas id="world"></canvas></div>
+  <div class="work-copy" id="workCopy"></div>
+</section>
+
+<section id="prestasi">
+  <div class="avail">PRESTASI</div>
+  <h2>SERTIFIKAT</h2>
+  <p class="muted">Bukti kelulusan. Klik foto untuk memperbesar.</p>
+  <div class="certs">
+    <figure class="cert" role="button" onclick="openCertZoom('assets/cert-dicoding-ai.jpg','Belajar Dasar AI','Dicoding Indonesia · 03 Oktober 2025')">
+      <img src="assets/cert-dicoding-ai.jpg" alt="Belajar Dasar AI"/>
+      <figcaption>
+        <b>Belajar Dasar AI</b>
+        <span>Dicoding Indonesia · 03 Oktober 2025</span>
+        <a href="https://www.dicoding.com/certificates/RVZKG8270XD5" target="_blank" rel="noreferrer" onclick="event.stopPropagation()">Verifikasi</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="features">
+  <div class="avail">PRODUCT SURFACE</div>
+  <h2>TEN FEATURES</h2>
+  <div class="feat-grid">
+    <article class="feat"><div class="k">01</div><h3>3D Work Gallery</h3><p class="muted" style="max-width:none">Orbit, drag, and fly around live project screens.</p></article>
+    <article class="feat"><div class="k">02</div><h3>Dark / Light</h3><p class="muted" style="max-width:none">Theme persists in the browser.</p></article>
+    <article class="feat"><div class="k">03</div><h3>EN / ID</h3><p class="muted" style="max-width:none">Switch the whole interface language.</p></article>
+    <article class="feat"><div class="k">04</div><h3>Command palette</h3><p class="muted" style="max-width:none">Ctrl + K to jump anywhere.</p></article>
+    <article class="feat"><div class="k">05</div><h3>Project search</h3><p class="muted" style="max-width:none">Filter the archive by name or stack.</p></article>
+    <article class="feat"><div class="k">06</div><h3>Case study modal</h3><p class="muted" style="max-width:none">Open a project without leaving the page.</p></article>
+    <article class="feat"><div class="k">07</div><h3>Services</h3><p class="muted" style="max-width:none">Clear engagement types for clients.</p></article>
+    <article class="feat"><div class="k">08</div><h3>Process timeline</h3><p class="muted" style="max-width:none">How a build actually moves.</p></article>
+    <article class="feat"><div class="k">09</div><h3>FAQ</h3><p class="muted" style="max-width:none">Answers before the first call.</p></article>
+    <article class="feat"><div class="k">10</div><h3>Contact + CV</h3><p class="muted" style="max-width:none">Form, WhatsApp, download a brief CV.</p></article>
+  </div>
+</section>
+
+<section id="services">
+  <div class="avail">SERVICES</div>
+  <h2>HOW WE WORK</h2>
+  <div class="grid3">
+    <article class="card"><h3>Systems build</h3><p class="muted" style="max-width:none">Web apps for attendance, inventory, documents, and field ops.</p></article>
+    <article class="card"><h3>QA & hardening</h3><p class="muted" style="max-width:none">Test the paths operators actually take.</p></article>
+    <article class="card"><h3>Rescue / rebuild</h3><p class="muted" style="max-width:none">Take a stalled PHP system and make it usable again.</p></article>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="avail">FROM THE FLOOR</div>
+  <h2>WHAT CHANGED</h2>
+  <div class="quotes">
+    <article class="quote"><p>The attendance desk stopped asking for a reprint of yesterday.</p><div class="k">Campus operations</div></article>
+    <article class="quote"><p>Dispatchers could see the queue without shouting across the yard.</p><div class="k">Terminal pilot</div></article>
+    <article class="quote"><p>Relief lines had a scan trail instead of a clipboard.</p><div class="k">Field coordination</div></article>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="avail">FAQ</div>
+  <h2>BEFORE THE CALL</h2>
+  <div class="faq" x-data="{open:false}" :class="open && 'open'">
+    <button type="button" @click="open=!open">Do you only build student systems? <span x-text="open ? '–' : '+'"></span></button>
+    <div class="a" x-show="open" x-transition>No. Those were the proving ground. The same patterns apply to operations software anywhere.</div>
+  </div>
+  <div class="faq" x-data="{open:false}" :class="open && 'open'">
+    <button type="button" @click="open=!open">Can you work in Laravel? <span x-text="open ? '–' : '+'"></span></button>
+    <div class="a" x-show="open" x-transition>Yes. I also ship Django, Flask, and CodeIgniter when the team already lives there.</div>
+  </div>
+  <div class="faq" x-data="{open:false}" :class="open && 'open'">
+    <button type="button" @click="open=!open">Remote or on-site? <span x-text="open ? '–' : '+'"></span></button>
+    <div class="a" x-show="open" x-transition>Bandung-based. Remote by default. On-site when the floor needs to be seen.</div>
+  </div>
+  <div class="faq" x-data="{open:false}" :class="open && 'open'">
+    <button type="button" @click="open=!open">How do we start? <span x-text="open ? '–' : '+'"></span></button>
+    <div class="a" x-show="open" x-transition>Send the brief: who uses it, what breaks, what “done” looks like.</div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="glass-panel">
+  <div class="avail">CONTACT</div>
+  <h2>WRITE THE BRIEF</h2>
+  <p class="muted">Apa yang rusak, siapa pemakainya, seperti apa selesai.</p>
+  <form method="POST" action="https://formsubmit.co/4429c29fb6c51eb66250befe7ba52d14">
+    <input type="hidden" name="_subject" value="Brief portfolio Giarda"/>
+    <input type="hidden" name="_captcha" value="false"/>
+    <input type="hidden" name="_template" value="table"/>
+    <input type="hidden" name="_next" value="thanks.html"/>
+    <input name="name" placeholder="Nama" required/>
+    <input type="email" name="email" placeholder="Email" required/>
+    <textarea name="message" placeholder="Brief" required></textarea>
+    <div class="row">
+      <button class="chip solid" type="submit">Kirim</button>
+      <a class="chip solid wa-btn" target="_blank" rel="noreferrer" href="https://wa.me/6282317796096?text=Halo%20Giarda%2C%20saya%20tertarik%20dengan%20portfolio%20Anda.">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11 11 0 0 0 2.1 16.7L1 23l6.4-1.1A11 11 0 0 0 12 23a11 11 0 0 0 8.5-19.5zM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.8.7.7-3.7-.2-.3A9 9 0 1 1 12 21zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.3 8 8 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.5-.6c.1-.2.1-.3 0-.5l-.9-2.1c-.2-.5-.5-.5-.6-.5h-.5c-.2 0-.5.1-.7.3s-1 1-1 2.4 1 2.8 1.1 3 1.9 3 4.6 4.1a15 15 0 0 0 1.5.5 3.6 3.6 0 0 0 1.7.1c.5-.1 1.6-.6 1.8-1.3s.2-1.1.2-1.2-.2-.2-.4-.3z"/></svg>
+        WhatsApp
+      </a>
+      <a class="ghost" href="cv.txt" download>Download CV</a>
+    </div>
+  </form>
+  </div>
+</section>
+<footer><span>© 2026 Giarda Zahran Putra Darmawan</span><span>Bandung</span></footer>
+</div>
+
+<div class="palette" x-show="palette" x-transition.opacity @click.self="closePalette()" x-cloak>
+  <div class="palette-box" @click.stop>
+    <input x-ref="palInput" x-model="q" placeholder="Jump… work, prestasi, contact" @keydown.enter.prevent="goFirst()" @keydown.escape.prevent="closePalette()"/>
+    <template x-for="item in filtered" :key="item.label">
+      <a :href="item.href" @click.prevent="go(item)" x-text="item.label"></a>
+    </template>
+  </div>
+</div>
+<div id="dock"></div>
+<script src="js/shape-grid.js"></script>
+<script src="js/text-type.js"></script>
+<script src="js/dock.js"></script>
+<script src="js/logo-loop.js"></script>
+<script>
+  createDock(document.getElementById('dock'), [
+    { icon:'⌂', label:'Home', href:'#home' },
+    { icon:'▣', label:'Work', href:'#work' },
+    { icon:'★', label:'Prestasi', href:'#prestasi' },
+    { icon:'▤', label:'Archive', href:'work.html' },
+    { icon:'✉', label:'Contact', href:'#contact' }
+  ], { panelHeight:68, baseItemSize:50, magnification:70, distance:200 });
+  if (window.createLogoLoop && document.getElementById('logoLoop')) createLogoLoop(document.getElementById('logoLoop'), [
+    { title:'TypeScript', node:'TS TypeScript' },
+    { title:'React', node:'React' },
+    { title:'Next.js', node:'Next.js' },
+    { title:'Tailwind', node:'Tailwind' },
+    { title:'Laravel', node:'Laravel' },
+    { title:'Three.js', node:'Three.js' }
+  ], { speed:120, direction:'left', logoHeight:22, gap:48, fadeOut:true, scaleOnHover:true });
+  (function(){
+    const canvas=document.getElementById('shapeGrid');
+    if(!canvas || !window.createShapeGrid) return;
+    createShapeGrid(canvas,{speed:0.5,squareSize:40,direction:'diagonal',borderColor:'#2a2a2e',hoverFillColor:'#222',shape:'square',hoverTrailAmount:5});
+  })();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const el=document.getElementById('roleType');
+  if(el && window.createTextType) createTextType(el, {text:['fresh Graduate','Junior Programmer','Happy coding!','Frontend Engineer'],typingSpeed:75,pauseDuration:1500,showCursor:true,cursorCharacter:'|',loop:true});
+});
+const cur=document.getElementById("cursor");
+addEventListener("pointermove",e=>{if(cur && !document.body.classList.contains('over-lanyard')){cur.style.left=e.clientX+"px";cur.style.top=e.clientY+"px";}});
+document.querySelectorAll('.lanyard-frame').forEach(f=>{
+  f.addEventListener('mouseenter',()=>document.body.classList.add('over-lanyard'));
+  f.addEventListener('mouseleave',()=>document.body.classList.remove('over-lanyard'));
+});
+const bar=document.getElementById("progress");
+addEventListener("scroll",()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";},{passive:true});
+
+const projects = [
+  {title:'RFID Student Monitoring',stack:['Django','RFID','Reporting'],desc:'Attendance captured at the gate, photo attached, email sent, records exported.',img:'assets/p-rfid.jpg'},
+  {title:'iTrak Terminal Operations',stack:['CodeIgniter','RFID','Analytics'],desc:'Driver attendance, queues, routes, and payments in one operational console.',img:'assets/p-itrak.jpg'},
+  {title:'ResQR Relief Logistics',stack:['CodeIgniter','QR','Field ops'],desc:'Beneficiary registration and relief distribution with a scan trail.',img:'assets/p-resqr.jpg'}
+];
+const copy=document.getElementById('workCopy');
+let idx=0;
+function setCopy(){
+  if(!copy||!projects.length) return;
+  const p=projects[idx%projects.length];
+  copy.innerHTML=`<div class="pills">${p.stack.map(s=>`<span>${s}</span>`).join('')}</div><h3>${p.title}</h3><p class="muted" style="max-width:none">${p.desc}</p>`;
+}
+setCopy();
+function bootGallery(){
+  const stage=document.getElementById('stage');
+  if(!stage||!window.THREE) return;
+  const renderer=new THREE.WebGLRenderer({canvas:document.getElementById('world'),antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.outputColorSpace=THREE.SRGBColorSpace;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(38,1,.1,40); camera.position.set(0,.2,6.4);
+  scene.add(new THREE.AmbientLight(0xffffff,.7));
+  const light=new THREE.DirectionalLight(0xffffff,1.1); light.position.set(3,4,5); scene.add(light);
+  const root=new THREE.Group(); scene.add(root); const cards=[];
+  const loader=new THREE.TextureLoader();
+  Promise.all(projects.map(p=>new Promise(res=>loader.load(p.img,res)))).then(texs=>{
+    texs.forEach(t=>t.colorSpace=THREE.SRGBColorSpace);
+    for(let i=0;i<6;i++){
+      const g=new THREE.Group();
+      const mat=new THREE.MeshStandardMaterial({map:texs[i%texs.length],roughness:.25});
+      g.add(new THREE.Mesh(new THREE.BoxGeometry(2.4,1.4,.06), new THREE.MeshStandardMaterial({color:0x171717,metalness:.4,roughness:.35})));
+      const face=new THREE.Mesh(new THREE.PlaneGeometry(2.26,1.26),mat); face.position.z=.035; g.add(face);
+      root.add(g); cards.push(g);
+    }
+  });
+  let rot=0,tRot=0,drag=false,last=0,mx=0;
+  stage.addEventListener('pointerdown',e=>{drag=true;last=e.clientX;stage.setPointerCapture(e.pointerId);});
+  stage.addEventListener('pointerup',()=>drag=false);
+  stage.addEventListener('pointermove',e=>{
+    const r=stage.getBoundingClientRect(); mx=(e.clientX-r.left)/r.width-.5;
+    if(drag){tRot+=(e.clientX-last)*0.008; last=e.clientX;}
+  });
+  function resize(){const w=stage.clientWidth,h=stage.clientHeight; if(!w||!h) return; renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+  resize(); addEventListener('resize',resize);
+  const clock=new THREE.Clock();
+  (function tick(){
+    requestAnimationFrame(tick);
+    const t=clock.getElapsedTime();
+    if(!drag) tRot += 0.003;
+    rot+=(tRot-rot)*0.08;
+    root.rotation.y=rot+mx*0.15;
+    cards.forEach((c,i)=>{
+      const a=(i/Math.max(cards.length,1))*Math.PI*2;
+      c.position.set(Math.sin(a)*2.8, Math.sin(t+i)*0.08, Math.cos(a)*2.8);
+      c.lookAt(0,0,0); c.rotateY(Math.PI);
+    });
+    const next=Math.round((-rot/(Math.PI*2))*cards.length);
+    if(cards.length){const n=((next%projects.length)+projects.length)%projects.length; if(n!==idx){idx=n;setCopy();}}
+    renderer.render(scene,camera);
+  })();
+}
+try{bootGallery();}catch(e){console.warn(e);}
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id" x-data="portfolioApp()" x-init="init()">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Archive — Giarda Zahran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/app.css"/>
+<link rel="stylesheet" href="css/shape-grid.css"/>
+<link rel="stylesheet" href="css/dock.css"/>
+<script defer src="js/alpine-app.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+</head>
+<body>
+<div class="shapegrid-bg"><canvas id="shapeGrid" class="shapegrid-canvas"></canvas></div>
+<div class="wrap">
+  <div class="nav-wrap">
+    <nav>
+      <a class="brand" href="index.html">giarda.dev</a>
+      <div class="links">
+        <a href="index.html#work">Work</a>
+        <a href="index.html#prestasi">Prestasi</a>
+        <a href="work.html">Archive</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="ghost" type="button" @click="toggleTheme()" x-text="theme==='dark' ? 'Light' : 'Night'"></button>
+        <a class="chip solid" href="index.html#contact">Available</a>
+      </div>
+    </nav>
+  </div>
+  <main class="hero" style="min-height:auto;display:block;padding-top:140px" x-data="{filter:''}">
+    <div class="avail">ARCHIVE</div>
+    <h2>TECHNICAL WORK</h2>
+    <input class="search" x-model="filter" placeholder="Search project or stack"/>
+    <div id="list">
+      <template x-for="(p,i) in [
+        ['RFID Student Monitoring','Attendance, photo capture, email notification, Drive export.','Python / Django'],
+        ['ResQR Relief Management','Beneficiary registration, relief distribution.','CodeIgniter 4'],
+        ['iTrak Terminal Management','Driver attendance, queues, payments.','CodeIgniter 4'],
+        ['DocuTrack','Official letters: archive, tag, approve.','CodeIgniter 4'],
+        ['Boarding House Rental','Listings, bookings, payments, reviews.','CodeIgniter 4'],
+        ['PayTrack Payroll','Compensation, deductions, payroll records.','CodeIgniter 4'],
+        ['Barangay Residents','Resident records, reservations, payments.','CodeIgniter 4'],
+        ['Store Credit Ledger','Accounts, outstanding debt, payments.','CodeIgniter 4'],
+        ['Employee Management','Records, attendance, payroll, requests.','CodeIgniter 4'],
+        ['Motorstar Rentals','Fleet browsing, reservations, tracking.','CodeIgniter 4'],
+        ['CPSC Library','Catalog, members, loans, fines.','CodeIgniter 4'],
+        ['IAS Satisfaction Surveys','Create, distribute, analyze feedback.','Python / Flask'],
+        ['DAGAN360 Race Ops','Checkpoint tracking with live progress.','CodeIgniter 4'],
+        ['OJTrackPro','OJT hours, attendance, dashboards.','CodeIgniter 4'],
+        ['PWD Records','Profiles, services, appointments.','CodeIgniter 4'],
+        ['Gym Management','Memberships, attendance, payments.','CodeIgniter 4'],
+        ['Car Rental','Vehicles, reservations, customers.','CodeIgniter 4']
+      ]" :key="p[0]">
+        <article class="proj" x-show="(p[0]+' '+p[1]+' '+p[2]).toLowerCase().includes(filter.toLowerCase())">
+          <div class="avail" x-text="String(i+1).padStart(2,'0')"></div>
+          <div><h3 x-text="p[0]"></h3><p class="muted" style="max-width:none" x-text="p[1]"></p></div>
+          <span class="chip" x-text="p[2]"></span>
+        </article>
+      </template>
+    </div>
+  </main>
+  <footer><span>© 2026 Giarda Zahran Putra Darmawan</span><span>Bandung</span></footer>
+</div>
+<script src="js/shape-grid.js"></script>
+<script src="js/dock.js"></script>
+<script>
+  createDock(document.getElementById('dock') || document.body.appendChild(Object.assign(document.createElement('div'),{id:'dock'})), [
+    { icon:'⌂', label:'Home', href:'index.html#home' },
+    { icon:'▣', label:'Work', href:'index.html#work' },
+    { icon:'★', label:'Prestasi', href:'index.html#prestasi' },
+    { icon:'▤', label:'Archive', href:'work.html' },
+    { icon:'✉', label:'Contact', href:'index.html#contact' }
+  ], { panelHeight:68, baseItemSize:50, magnification:70, distance:200 });
+</script>
+</body>
+</html>

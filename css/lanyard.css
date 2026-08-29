@@ -1,0 +1,25 @@
+.id-col{
+  position:relative;
+  min-height:88vh;
+  z-index:16;
+  pointer-events:auto;
+}
+.lanyard-frame{
+  width:100%;
+  height:min(94vh,860px);
+  border:0;
+  background:transparent;
+  display:block;
+  pointer-events:auto;
+  position:relative;
+  z-index:16;
+}
+body.over-lanyard .cursor{display:none !important}
+@media(max-width:900px){
+  .id-col{min-height:460px}
+  .lanyard-frame{height:min(62vh,520px)}
+}
+@media(max-width:560px){
+  .id-col{min-height:380px}
+  .lanyard-frame{height:min(54vh,420px)}
+}

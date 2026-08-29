@@ -1,0 +1,12 @@
+GIE ZANS
+Software Engineer — Systems & Product
+Bandung, Indonesia
+hello@gizza.dev
+
+Selected work
+- RFID Student Monitoring (Django)
+- iTrak Terminal Operations (CodeIgniter)
+- ResQR Relief Logistics (CodeIgniter)
+
+Focus
+Operational web systems, QA, delivery.
