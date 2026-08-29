@@ -25,7 +25,7 @@
     <button type="button" id="enterBtn" @click="enter()">giarda.dev</button>
   </div>
 </div>
-<div class="shapegrid-bg"><canvas id="shapeGrid" class="shapegrid-canvas"></canvas></div>
+<div class="silk-bg"><canvas id="silk" class="silk-canvas"></canvas></div>
 <div class="wrap">
   <div class="nav-wrap">
     <nav>
@@ -181,7 +181,7 @@
   </div>
 </div>
 <div id="dock"></div>
-<script src="js/shape-grid.js"></script>
+<script src="js/silk.js"></script>
 <script src="js/text-type.js"></script>
 <script src="js/dock.js"></script>
 <script src="js/logo-loop.js"></script>
@@ -202,9 +202,16 @@
     { title:'Three.js', node:'Three.js' }
   ], { speed:120, direction:'left', logoHeight:22, gap:48, fadeOut:true, scaleOnHover:true });
   (function(){
-    const canvas=document.getElementById('shapeGrid');
-    if(!canvas || !window.createShapeGrid) return;
-    createShapeGrid(canvas,{speed:0.5,squareSize:40,direction:'diagonal',borderColor:'#2a2a2e',hoverFillColor:'#222',shape:'square',hoverTrailAmount:5});
+    const canvas=document.getElementById('silk');
+    if(!canvas || !window.createSilk) return;
+    const light=document.documentElement.dataset.theme==='light';
+    createSilk(canvas,{
+      speed:3.9,
+      scale:1,
+      color: light ? '#d7d2c8' : '#2a2730',
+      noiseIntensity:0.9,
+      rotation:0
+    });
   })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

@@ -160,3 +160,7 @@ footer{padding:20px 8vw 48px;color:#777;display:flex;justify-content:space-betwe
 .thanks-page{min-height:70vh;display:grid;place-items:center;padding:48px 16px}
 .thanks-card{max-width:560px;width:min(560px,92vw);padding:28px}
 .thanks-card p{margin:10px 0 0;max-width:none}
+
+.silk-bg,.shapegrid-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.silk-canvas,.shapegrid-canvas{width:100%;height:100%;display:block}
+.wrap{position:relative;z-index:1}
